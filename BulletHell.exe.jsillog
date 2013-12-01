@@ -1,0 +1,27 @@
+// JSILc v0.7.31912
+// Build took 0022.98 second(s).
+// The following configuration was used when translating 'c:\dev\game-off-2013\BulletHell\BulletHell\bin\x86\Debug\BulletHell.exe':
+{"ContributingPaths":["c:\\dev\\JSIL\\bin\\defaults.jsilconfig"],"Path":"c:\\dev\\JSIL\\bin","SolutionBuilder":{"Configuration":null,"Platform":null,"Target":null,"LogVerbosity":null,"ExtraOutputs":[]},"AutoLoadConfigFiles":null,"UseLocalProxies":null,"ReuseTypeInfoAcrossAssemblies":null,"OutputDirectory":"c:\\dev\\html5","FileOutputDirectory":null,"Profile":"XNA4","ProfileSettings":{"OverwriteExistingContent":true,"ContentOutputDirectory":"%outputdirectory%/Content"},"CustomVariables":{},"ApplyDefaults":null,"IncludeDependencies":null,"UseSymbols":null,"UseThreads":null,"UseDefaultProxies":null,"GenerateSkeletonsForStubbedAssemblies":null,"GenerateContentManifest":null,"RunBugChecks":null,"FilenameEscapeRegex":null,"AssemblyCollectionName":null,"FrameworkVersion":4,"Assemblies":{"Ignored":["Microsoft\\.VisualC,","Accessibility,","SMDiagnostics,","System\\.EnterpriseServices,","System\\.Security,","System\\.Runtime\\.Serialization\\.Formatters\\.Soap,","System\\.Runtime\\.DurableInstancing,","System\\.Data\\.SqlXml,","JSIL\\.Meta,"],"Stubbed":["mscorlib,","^System,","^System\\.(.+),","^Microsoft\\.(.+),","FSharp.Core,"],"Proxies":["c:\\dev\\JSIL\\bin\\JSIL.Proxies.XNA4.dll"],"Redirects":{}},"CodeGenerator":{"EliminateStructCopies":null,"SimplifyOperators":null,"SimplifyLoops":null,"EliminateTemporaries":null,"EliminateRedundantControlFlow":null,"CacheMethodSignatures":null,"CacheGenericMethodSignatures":null,"CacheTypeExpressions":null,"EliminatePointlessFinallyBlocks":null,"PreferAccessorMethods":null,"HintIntegerArithmetic":null,"EnableThreadedTransforms":null,"FreezeImmutableObjects":null,"EnableUnsafeCode":null,"HoistAllocations":null,"HintDoubleArithmetic":null,"AutoGenerateEventAccessorsInSkeletons":null}}
+// The configuration was generated from the following configuration files:
+c:\dev\JSIL\bin\defaults.jsilconfig
+// The following outputs were produced:
+XNA.Colors.js
+Microsoft.Xna.Framework.Input.Touch, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553.js
+Microsoft.Xna.Framework.Game, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553.js
+Microsoft.Xna.Framework.GamerServices, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553.js
+BulletHell, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null.js
+System.Numerics, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089.js
+Microsoft.Xna.Framework.Graphics, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553.js
+System.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a.js
+Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553.js
+System.Deployment, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a.js
+System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a.js
+System.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089.js
+System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089.js
+System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089.js
+System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089.js
+mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089.js
+Microsoft.Xna.Framework.RuntimeProfile
+// The following method(s) were ignored due to untranslatable variables:
+// Miscellaneous log output follows:
+
