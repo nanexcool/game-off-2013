@@ -11,7 +11,8 @@ namespace BulletHell.Engine
     public enum TileType
     {
         Empty,
-        Grass
+        Grass,
+        Exit
     }
 
     public struct Tile

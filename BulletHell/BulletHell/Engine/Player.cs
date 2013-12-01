@@ -16,6 +16,14 @@ namespace BulletHell.Engine
 
         public List<Bullet> Bullets { get; set; }
 
+        public override Rectangle CollisionBox
+        {
+            get
+            {
+                return new Rectangle(X, Y, Width, Height);
+            }
+        }
+
         public Player(Texture2D texture)
             : base(texture)
         {
@@ -87,6 +95,11 @@ namespace BulletHell.Engine
                     Bullets.RemoveAt(i);
                     i--;
                 }
+            }
+
+            if (Level.Complete && CollisionBox.Intersects(Level.ExitTile))
+            {
+                Level.GoToNextLevel = true;
             }
             base.Update(elapsed);
         }

@@ -26,12 +26,22 @@ namespace BulletHell.Engine
 
         private float enemyTimer = 0;
 
+        private bool doorSpawned = false;
+
+        public bool Complete { get; set; }
+        public bool GoToNextLevel { get; set; }
+
+        public Rectangle ExitTile { get; set; }
+
         public Level(int width, int height, int enemies)
         {
             Width = width;
             Height = height;
 
             NumberOfEnemies = enemies;
+
+            Complete = false;
+            GoToNextLevel = false;
 
             Tiles = new Tile[width * height];
 
@@ -117,6 +127,29 @@ namespace BulletHell.Engine
             return false;
         }
 
+        public void SpawnDoor()
+        {
+            int x = Util.Next(1, Width);
+            int y = Util.Next(1, Height);
+
+            for (int i = 0; i < 200; i++)
+            {
+                if (!GetTile(x, y).IsSolid())
+                {
+                    Tiles[x + y * Width].Type = TileType.Exit;
+                    Tiles[x + y * Width].Color = Color.Red;
+                    ExitTile = new Rectangle(x * Tile.Size, y * Tile.Size, Tile.Size, Tile.Size);
+                    doorSpawned = true;
+                    return;
+                }
+                else
+                {
+                    x = Util.Next(3, Width - 2);
+                    y = Util.Next(3, Height - 1);
+                }
+            }
+        }
+
         public virtual void Update(float elapsed)
         {
             enemyTimer += elapsed;
@@ -143,6 +176,12 @@ namespace BulletHell.Engine
             }
 
             Camera.Update(elapsed);
+
+            if (NumberOfEnemies == 0 && !doorSpawned)
+            {
+                SpawnDoor();
+                Complete = true;
+            }
         }
 
         public virtual void Draw(SpriteBatch spriteBatch)
@@ -165,11 +204,15 @@ namespace BulletHell.Engine
             if (x2 > Width) x2 = Width;
             if (y2 > Height) y2 = Height;
 
+            Tile t;
+
             for (int y = y1; y < y2; y++)
             {
                 for (int x = x1; x < x2; x++)
                 {
-                    spriteBatch.Draw(Util.Texture, new Rectangle(x * Tile.Size, y * Tile.Size, Tile.Size, Tile.Size), GetTile(x, y).Color);
+                    t = GetTile(x, y);
+                    
+                    spriteBatch.Draw(Util.Texture, new Rectangle(x * Tile.Size, y * Tile.Size, Tile.Size, Tile.Size), t.Color);
 
                 }
             }

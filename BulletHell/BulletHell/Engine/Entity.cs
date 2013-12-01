@@ -49,7 +49,7 @@ namespace BulletHell.Engine
             }
         }
 
-        public Rectangle CollisionBox
+        public virtual Rectangle CollisionBox
         {
             get
             {

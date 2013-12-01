@@ -189,7 +189,7 @@ namespace BulletHell
                     }
 
                     level.Update(elapsed);
-                    if (level.NumberOfEnemies == 0)
+                    if (level.GoToNextLevel)
                     {
                         width += 2;
                         height += 2;
@@ -202,9 +202,7 @@ namespace BulletHell
                 default:
                     break;
             }
-
             
-
             base.Update(gameTime);
         }
 
@@ -214,7 +212,7 @@ namespace BulletHell
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
 
             //spriteBatch.Begin();
             
