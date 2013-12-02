@@ -46494,7 +46494,7 @@ JSIL.MakeEnum(
 JSIL.DeclareNamespace("System.Security.Cryptography.Xml");
 (function ManifestSignedXml$Members () {
   var $, $thisType;
-  JSIL.MakeClass($asm12.TypeRef("System.Security.Cryptography.Xml.SignedXml"), "System.Security.Cryptography.Xml.ManifestSignedXml", false, [], function ($interfaceBuilder) {
+  JSIL.MakeClass($asm10.TypeRef("System.Security.Cryptography.Xml.SignedXml"), "System.Security.Cryptography.Xml.ManifestSignedXml", false, [], function ($interfaceBuilder) {
     $ = $interfaceBuilder;
 
     $.ExternalMethod({Static:false, Public:true }, ".ctor", 
@@ -46581,7 +46581,7 @@ JSIL.DeclareNamespace("System.Security.Cryptography.Xml");
     );
 
     $.ExternalMethod({Static:true , Public:false}, "VerifyStrongNameSignatureTransforms", 
-      new JSIL.MethodSignature($asm09.TypeRef("System.Security.Cryptography.SignatureVerificationResult"), [$asm12.TypeRef("System.Security.Cryptography.Xml.SignedInfo")], [])
+      new JSIL.MethodSignature($asm09.TypeRef("System.Security.Cryptography.SignatureVerificationResult"), [$asm10.TypeRef("System.Security.Cryptography.Xml.SignedInfo")], [])
     );
 
     $.Field({Static:false, Public:false}, "m_manifest", $asm09.TypeRef("System.Security.ManifestKinds")); 

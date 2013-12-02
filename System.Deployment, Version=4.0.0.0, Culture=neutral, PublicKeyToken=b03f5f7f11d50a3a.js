@@ -15983,7 +15983,7 @@ JSIL.MakeInterface(
 
 (function ManifestSignedXml$Members () {
   var $, $thisType;
-  JSIL.MakeClass($asm12.TypeRef("System.Security.Cryptography.Xml.SignedXml"), "System.Deployment.Internal.CodeSigning.ManifestSignedXml", false, [], function ($interfaceBuilder) {
+  JSIL.MakeClass($asm10.TypeRef("System.Security.Cryptography.Xml.SignedXml"), "System.Deployment.Internal.CodeSigning.ManifestSignedXml", false, [], function ($interfaceBuilder) {
     $ = $interfaceBuilder;
 
     $.ExternalMethod({Static:false, Public:false}, ".ctor", 

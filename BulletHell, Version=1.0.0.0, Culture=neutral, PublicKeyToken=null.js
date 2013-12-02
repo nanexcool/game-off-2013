@@ -3314,12 +3314,12 @@ JSIL.MakeEnum(
           }
           if (this.keyboardState.IsKeyDown($T1E().A)) {
             (this.player.Velocity = $S01().Construct(-300, this.player.Velocity.Y));
-          } else if (this.keyboardState.IsKeyDown($T1E().E)) {
+          } else if (this.keyboardState.IsKeyDown($T1E().D)) {
             (this.player.Velocity = $S01().Construct(300, this.player.Velocity.Y));
           }
-          if (this.keyboardState.IsKeyDown($T1E().OemComma)) {
+          if (this.keyboardState.IsKeyDown($T1E().W)) {
             (this.player.Velocity = $S01().Construct(this.player.Velocity.X, -300));
-          } else if (this.keyboardState.IsKeyDown($T1E().O)) {
+          } else if (this.keyboardState.IsKeyDown($T1E().S)) {
             (this.player.Velocity = $S01().Construct(this.player.Velocity.X, 300));
           }
           if (this.keyboardState.IsKeyDown($T1E().Left)) {
