@@ -20,7 +20,9 @@ namespace BulletHell.Engine
 
         public int Damage { get; set; }
 
-        public Bullet() 
+        public Player Player { get; set; }
+
+        public Bullet(Player p) 
             : base(Util.Texture)
         {
             Width = 16;
@@ -35,6 +37,8 @@ namespace BulletHell.Engine
             IsActive = true;
 
             Damage = 1;
+
+            Player = p;
         }
 
         public void OnCollide(Entity e)
@@ -46,6 +50,7 @@ namespace BulletHell.Engine
                 if (e.Health <= 0)
                 {
                     e.CanRemove = true;
+                    Player.EnemiesKilled++;
                 }
             }
         }

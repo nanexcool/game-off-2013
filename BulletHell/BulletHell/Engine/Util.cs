@@ -13,7 +13,7 @@ namespace BulletHell.Engine
         public static Texture2D Texture;
         public static Texture2D OctoTexture;
         public static SpriteFont Font;
-
+        public static SpriteFont EndFont;
         public static Random random;
 
         public static void Initialize(Game game)
@@ -22,6 +22,7 @@ namespace BulletHell.Engine
             Texture.SetData<Color>(new Color[] { Color.White });
 
             Font = game.Content.Load<SpriteFont>("Font");
+            EndFont = game.Content.Load<SpriteFont>("EndFont");
             OctoTexture = game.Content.Load<Texture2D>("Octocat");
             random = new Random();
         }

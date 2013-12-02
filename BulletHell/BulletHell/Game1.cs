@@ -27,6 +27,7 @@ namespace BulletHell
 
         GameMode mode = GameMode.Menu;
         Texture2D titleTexture;
+        Texture2D endTexture;
 
         StringBuilder sb = new StringBuilder();
 
@@ -60,6 +61,7 @@ namespace BulletHell
             Util.Initialize(this);
 
             titleTexture = Content.Load<Texture2D>("title");
+            endTexture = Content.Load<Texture2D>("endtitle");
 
             player = new Player(Content.Load<Texture2D>("Octocat"));
 
@@ -73,7 +75,7 @@ namespace BulletHell
             level = new Level(width, height, levelNumber + 2);
             level.AddEntity(player);
             level.Player = player;
-
+            player.Health++;
             player.Position = new Vector2(3 * Tile.Size + (player.Width / 2), 3 * Tile.Size - (player.Height / 2) + Tile.Size / 2);
             player.Bullets.Clear();
             camera = new Camera(this);
@@ -146,8 +148,6 @@ namespace BulletHell
 
                     if (keyboardState.IsKeyDown(Keys.Space) && oldKeyboardState.IsKeyUp(Keys.Space))
                     {
-                        //camera.Shake(5, 3);
-                        level.AddEnemy();
                         for (int i = 0; i < level.Tiles.Length; i++)
                         {
                             if (level.Tiles[i].Color == Color.Black)
@@ -204,8 +204,20 @@ namespace BulletHell
                         if (height > 35) height = 35;
                         NewLevel(width, height, levelNumber + 2);
                     }
+                    if (player.Health <= 0)
+                    {
+                        mode = GameMode.End;
+                    }
                     break;
                 case GameMode.End:
+                    if (keyboardState.GetPressedKeys().Length > 0 && keyboardState.IsKeyUp(Keys.Escape))
+                    {
+                        mode = GameMode.Gameplay;
+                        width = 20;
+                        height = 11;
+                        levelNumber = 1;
+                        NewLevel(width, height, 3);
+                    }
                     break;
                 default:
                     break;
@@ -240,14 +252,25 @@ namespace BulletHell
                     spriteBatch.Begin();
                     sb.Clear();
                     sb.AppendLine("Level: " + levelNumber);
-                    sb.AppendLine("Enemies left: " + level.NumberOfEnemies);
+                    if (level.NumberOfEnemies <= 0)
+                    {
+                        sb.AppendLine("No more enemies. Find the RED EXIT!");
+                    }
+                    else
+                    {
+                        sb.AppendLine("Enemies left: " + level.NumberOfEnemies);
+                    }
                     sb.AppendLine("Health: " + player.Health);
                     spriteBatch.DrawString(Util.Font, sb, Vector2.Zero, Color.Purple);
                     spriteBatch.End();
                     break;
                 case GameMode.End:
                     spriteBatch.Begin();
-                    spriteBatch.Draw(titleTexture, Vector2.Zero, null, Color.White, 0, Vector2.Zero, 2, SpriteEffects.None, 0);
+                    sb.Clear();
+                    sb.AppendLine("You reached level " + levelNumber);
+                    sb.AppendLine("You killed " + player.EnemiesKilled + " enemies");
+                    spriteBatch.Draw(endTexture, Vector2.Zero, null, Color.White, 0, Vector2.Zero, 2, SpriteEffects.None, 0);
+                    spriteBatch.DrawString(Util.EndFont, sb, new Vector2(150, 300), Color.Gray);
                     spriteBatch.End();
                     break;
                 default:

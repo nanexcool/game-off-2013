@@ -18,6 +18,8 @@ namespace BulletHell.Engine
 
         public List<Bullet> Bullets { get; set; }
 
+        public int EnemiesKilled { get; set; }
+
         public override Rectangle CollisionBox
         {
             get
@@ -37,7 +39,9 @@ namespace BulletHell.Engine
 
             ShootDelay = 0.2f;
 
-            Health = 5;
+            EnemiesKilled = 0;
+
+            Health = 4;
 
             Bullets = new List<Bullet>();
         }
@@ -47,7 +51,7 @@ namespace BulletHell.Engine
             if (shootTimer <= 0)
             {
                 // Shoot
-                Bullet b = new Bullet();
+                Bullet b = new Bullet(this);
                 b.Position = position;
                 switch (d)
                 {
@@ -77,10 +81,11 @@ namespace BulletHell.Engine
             {
                 Health -= damage;
                 damageTimer += 1;
+                Level.Camera.Shake(5, 1);
             }
             if (Health <= 0)
             {
-                // DEAD
+                
             }
         }
 
