@@ -4,9 +4,11 @@ This is a Binding of Isaac like game.
 
 Every room gets bigger with more enemies!
 
+Rooms CHANGE (nudge, nudge) every time you play!
+
 Find the red door after you kill all enemies to go further down the rabbit hole!
 
-WASD to move, arrow keys to fire bullets. Space changes all solid tiles into walkable tiles and viceversa! Keep in mind some enemies can fly!
+WASD to move, ARROW KEYS to fire bullets. SPACE BAR changes all solid tiles into walkable tiles and viceversa! Keep in mind some enemies can fly!
 
 ## What I learned
 
