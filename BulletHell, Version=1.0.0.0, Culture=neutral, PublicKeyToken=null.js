@@ -56,6 +56,7 @@ JSIL.DeclareNamespace("BulletHell.Engine");
     (this.Entity$Color$value = $T01().get_White().MemberwiseClone());
     this.Entity$CanFly$value = false;
     this.Entity$CanRemove$value = false;
+    this.Entity$Health$value = 3;
   };
 
   function Entity_Draw (spriteBatch) {
@@ -81,6 +82,10 @@ JSIL.DeclareNamespace("BulletHell.Engine");
 
   function Entity_get_DrawRectangle () {
     return new ($T03())(this.get_X(), this.get_Y(), this.Entity$Width$value, this.Entity$Height$value);
+  };
+
+  function Entity_get_Health () {
+    return this.Entity$Health$value;
   };
 
   function Entity_get_Height () {
@@ -206,6 +211,10 @@ JSIL.DeclareNamespace("BulletHell.Engine");
     this.Entity$Color$value = value;
   };
 
+  function Entity_set_Health (value) {
+    this.Entity$Health$value = value;
+  };
+
   function Entity_set_Height (value) {
     this.Entity$Height$value = value;
   };
@@ -286,6 +295,12 @@ JSIL.DeclareNamespace("BulletHell.Engine");
       Entity_get_DrawRectangle
     );
 
+    $.Method({Static:false, Public:true }, "get_Health", 
+      new JSIL.MethodSignature($.Int32, [], []), 
+      Entity_get_Health
+    )
+      .Attribute($asm06.TypeRef("System.Runtime.CompilerServices.CompilerGeneratedAttribute"));
+
     $.Method({Static:false, Public:true }, "get_Height", 
       new JSIL.MethodSignature($.Int32, [], []), 
       Entity_get_Height
@@ -365,6 +380,12 @@ JSIL.DeclareNamespace("BulletHell.Engine");
     )
       .Attribute($asm06.TypeRef("System.Runtime.CompilerServices.CompilerGeneratedAttribute"));
 
+    $.Method({Static:false, Public:true }, "set_Health", 
+      new JSIL.MethodSignature(null, [$.Int32], []), 
+      Entity_set_Health
+    )
+      .Attribute($asm06.TypeRef("System.Runtime.CompilerServices.CompilerGeneratedAttribute"));
+
     $.Method({Static:false, Public:true }, "set_Height", 
       new JSIL.MethodSignature(null, [$.Int32], []), 
       Entity_set_Height
@@ -432,6 +453,8 @@ JSIL.DeclareNamespace("BulletHell.Engine");
       .Attribute($asm06.TypeRef("System.Runtime.CompilerServices.CompilerGeneratedAttribute")); 
     $.Field({Static:false, Public:false}, "Entity$CanFly$value", $.Boolean)
       .Attribute($asm06.TypeRef("System.Runtime.CompilerServices.CompilerGeneratedAttribute")); 
+    $.Field({Static:false, Public:false}, "Entity$Health$value", $.Int32)
+      .Attribute($asm06.TypeRef("System.Runtime.CompilerServices.CompilerGeneratedAttribute")); 
     $.Field({Static:false, Public:false}, "Entity$Texture$value", $asm04.TypeRef("Microsoft.Xna.Framework.Graphics.Texture2D"))
       .Attribute($asm06.TypeRef("System.Runtime.CompilerServices.CompilerGeneratedAttribute")); 
     $.Field({Static:false, Public:false}, "Entity$Color$value", $asm01.TypeRef("Microsoft.Xna.Framework.Color"))
@@ -458,6 +481,8 @@ JSIL.DeclareNamespace("BulletHell.Engine");
 
     $.Property({Static:false, Public:true }, "CanFly", $.Boolean);
 
+    $.Property({Static:false, Public:true }, "Health", $.Int32);
+
     $.Property({Static:false, Public:true }, "DrawRectangle", $asm01.TypeRef("Microsoft.Xna.Framework.Rectangle"));
 
     $.Property({Static:false, Public:true , Virtual:true }, "CollisionBox", $asm01.TypeRef("Microsoft.Xna.Framework.Rectangle"));
@@ -478,50 +503,69 @@ JSIL.DeclareNamespace("BulletHell.Engine");
 (function Bullet$Members () {
   var $, $thisType;
   var $T00 = function () {
-    return ($T00 = JSIL.Memoize($asm00.BulletHell.Engine.Entity)) ();
+    return ($T00 = JSIL.Memoize($asm00.BulletHell.Engine.Player)) ();
   };
   var $T01 = function () {
-    return ($T01 = JSIL.Memoize($asm00.BulletHell.Engine.Util)) ();
+    return ($T01 = JSIL.Memoize($asm00.BulletHell.Engine.Entity)) ();
   };
   var $T02 = function () {
-    return ($T02 = JSIL.Memoize($asm01.Microsoft.Xna.Framework.Color)) ();
+    return ($T02 = JSIL.Memoize($asm00.BulletHell.Engine.Util)) ();
   };
   var $T03 = function () {
-    return ($T03 = JSIL.Memoize($asm04.Microsoft.Xna.Framework.Graphics.SpriteBatch)) ();
+    return ($T03 = JSIL.Memoize($asm01.Microsoft.Xna.Framework.Color)) ();
   };
   var $T04 = function () {
-    return ($T04 = JSIL.Memoize($asm01.Microsoft.Xna.Framework.Rectangle)) ();
+    return ($T04 = JSIL.Memoize($asm04.Microsoft.Xna.Framework.Graphics.SpriteBatch)) ();
   };
   var $T05 = function () {
-    return ($T05 = JSIL.Memoize($asm00.BulletHell.Engine.Enemy)) ();
+    return ($T05 = JSIL.Memoize($asm01.Microsoft.Xna.Framework.Rectangle)) ();
   };
   var $T06 = function () {
-    return ($T06 = JSIL.Memoize($asm06.System.Boolean)) ();
+    return ($T06 = JSIL.Memoize($asm00.BulletHell.Engine.Enemy)) ();
   };
   var $T07 = function () {
-    return ($T07 = JSIL.Memoize($asm06.System.Single)) ();
+    return ($T07 = JSIL.Memoize($asm06.System.Int32)) ();
   };
   var $T08 = function () {
-    return ($T08 = JSIL.Memoize($asm01.Microsoft.Xna.Framework.Vector2)) ();
+    return ($T08 = JSIL.Memoize($asm06.System.Boolean)) ();
+  };
+  var $T09 = function () {
+    return ($T09 = JSIL.Memoize($asm06.System.Single)) ();
+  };
+  var $T0A = function () {
+    return ($T0A = JSIL.Memoize($asm01.Microsoft.Xna.Framework.Vector2)) ();
+  };
+  var $S00 = function () {
+    return ($S00 = JSIL.Memoize(new JSIL.MethodSignature(null, [$asm04.TypeRef("Microsoft.Xna.Framework.Graphics.Texture2D")], []))) ();
   };
 
-  function Bullet__ctor () {
+  function Bullet__ctor (p) {
     this.life = +0;
-    $T00().prototype._ctor.call(this, $T01().Texture);
+    $S00().Call($T01().prototype, "_ctor", null, this, $T02().Texture);
     this.Entity$Width$value = 16;
     this.Entity$Height$value = 16;
     this.Bullet$Speed$value = +500;
     this.Bullet$TimeToLive$value = +0.8;
-    (this.Entity$Color$value = $T02().get_Aqua().MemberwiseClone());
+    (this.Entity$Color$value = $T03().get_Aqua().MemberwiseClone());
     this.Bullet$IsActive$value = true;
+    this.Bullet$Damage$value = 1;
+    this.Bullet$Player$value = p;
   };
 
   function Bullet_Draw (spriteBatch) {
-    spriteBatch.DrawRect($T01().Texture, this.get_CollisionBox(), new ($T04())(0, 0, this.Entity$Width$value, this.Entity$Height$value), this.Entity$Color$value);
+    spriteBatch.DrawRect($T02().Texture, this.get_CollisionBox(), new ($T05())(0, 0, this.Entity$Width$value, this.Entity$Height$value), this.Entity$Color$value);
+  };
+
+  function Bullet_get_Damage () {
+    return this.Bullet$Damage$value;
   };
 
   function Bullet_get_IsActive () {
     return this.Bullet$IsActive$value;
+  };
+
+  function Bullet_get_Player () {
+    return this.Bullet$Player$value;
   };
 
   function Bullet_get_Speed () {
@@ -533,14 +577,31 @@ JSIL.DeclareNamespace("BulletHell.Engine");
   };
 
   function Bullet_OnCollide (e) {
-    if ($T05().$Is(e)) {
-      e.Entity$CanRemove$value = true;
+    var $temp00, $temp01;
+    if ($T06().$Is(e)) {
       this.Bullet$IsActive$value = false;
+      ($temp00 = ((e.Entity$Health$value - this.Bullet$Damage$value) | 0), 
+        e.Entity$Health$value = $temp00, 
+        $temp00);
+      if (e.Entity$Health$value <= 0) {
+        e.Entity$CanRemove$value = true;
+        ($temp01 = ((this.Bullet$Player$value.Player$EnemiesKilled$value + 1) | 0), 
+          this.Bullet$Player$value.Player$EnemiesKilled$value = $temp01, 
+          $temp01);
+      }
     }
+  };
+
+  function Bullet_set_Damage (value) {
+    this.Bullet$Damage$value = value;
   };
 
   function Bullet_set_IsActive (value) {
     this.Bullet$IsActive$value = value;
+  };
+
+  function Bullet_set_Player (value) {
+    this.Bullet$Player$value = value;
   };
 
   function Bullet_set_Speed (value) {
@@ -552,7 +613,7 @@ JSIL.DeclareNamespace("BulletHell.Engine");
   };
 
   function Bullet_Update (elapsed) {
-    (this.Entity$Position = $T08().op_Addition(this.Entity$Position, $T08().op_MultiplyScalar($T08().op_MultiplyScalar(this.get_Velocity(), this.Bullet$Speed$value), elapsed)));
+    (this.Entity$Position = $T0A().op_Addition(this.Entity$Position, $T0A().op_MultiplyScalar($T0A().op_MultiplyScalar(this.get_Velocity(), this.Bullet$Speed$value), elapsed)));
     this.life += +elapsed;
     if (this.life >= this.Bullet$TimeToLive$value) {
       this.Bullet$IsActive$value = false;
@@ -563,7 +624,7 @@ JSIL.DeclareNamespace("BulletHell.Engine");
     $ = $interfaceBuilder;
 
     $.Method({Static:false, Public:true }, ".ctor", 
-      new JSIL.MethodSignature(null, [], []), 
+      new JSIL.MethodSignature(null, [$asm00.TypeRef("BulletHell.Engine.Player")], []), 
       Bullet__ctor
     );
 
@@ -572,9 +633,21 @@ JSIL.DeclareNamespace("BulletHell.Engine");
       Bullet_Draw
     );
 
+    $.Method({Static:false, Public:true }, "get_Damage", 
+      new JSIL.MethodSignature($.Int32, [], []), 
+      Bullet_get_Damage
+    )
+      .Attribute($asm06.TypeRef("System.Runtime.CompilerServices.CompilerGeneratedAttribute"));
+
     $.Method({Static:false, Public:true }, "get_IsActive", 
       new JSIL.MethodSignature($.Boolean, [], []), 
       Bullet_get_IsActive
+    )
+      .Attribute($asm06.TypeRef("System.Runtime.CompilerServices.CompilerGeneratedAttribute"));
+
+    $.Method({Static:false, Public:true }, "get_Player", 
+      new JSIL.MethodSignature($asm00.TypeRef("BulletHell.Engine.Player"), [], []), 
+      Bullet_get_Player
     )
       .Attribute($asm06.TypeRef("System.Runtime.CompilerServices.CompilerGeneratedAttribute"));
 
@@ -595,9 +668,21 @@ JSIL.DeclareNamespace("BulletHell.Engine");
       Bullet_OnCollide
     );
 
+    $.Method({Static:false, Public:true }, "set_Damage", 
+      new JSIL.MethodSignature(null, [$.Int32], []), 
+      Bullet_set_Damage
+    )
+      .Attribute($asm06.TypeRef("System.Runtime.CompilerServices.CompilerGeneratedAttribute"));
+
     $.Method({Static:false, Public:true }, "set_IsActive", 
       new JSIL.MethodSignature(null, [$.Boolean], []), 
       Bullet_set_IsActive
+    )
+      .Attribute($asm06.TypeRef("System.Runtime.CompilerServices.CompilerGeneratedAttribute"));
+
+    $.Method({Static:false, Public:true }, "set_Player", 
+      new JSIL.MethodSignature(null, [$asm00.TypeRef("BulletHell.Engine.Player")], []), 
+      Bullet_set_Player
     )
       .Attribute($asm06.TypeRef("System.Runtime.CompilerServices.CompilerGeneratedAttribute"));
 
@@ -625,11 +710,19 @@ JSIL.DeclareNamespace("BulletHell.Engine");
       .Attribute($asm06.TypeRef("System.Runtime.CompilerServices.CompilerGeneratedAttribute")); 
     $.Field({Static:false, Public:false}, "Bullet$TimeToLive$value", $.Single)
       .Attribute($asm06.TypeRef("System.Runtime.CompilerServices.CompilerGeneratedAttribute")); 
+    $.Field({Static:false, Public:false}, "Bullet$Damage$value", $.Int32)
+      .Attribute($asm06.TypeRef("System.Runtime.CompilerServices.CompilerGeneratedAttribute")); 
+    $.Field({Static:false, Public:false}, "Bullet$Player$value", $asm00.TypeRef("BulletHell.Engine.Player"))
+      .Attribute($asm06.TypeRef("System.Runtime.CompilerServices.CompilerGeneratedAttribute")); 
     $.Property({Static:false, Public:true }, "Speed", $.Single);
 
     $.Property({Static:false, Public:true }, "IsActive", $.Boolean);
 
     $.Property({Static:false, Public:true }, "TimeToLive", $.Single);
+
+    $.Property({Static:false, Public:true }, "Damage", $.Int32);
+
+    $.Property({Static:false, Public:true }, "Player", $asm00.TypeRef("BulletHell.Engine.Player"));
 
     return function (newThisType) { $thisType = newThisType; }; 
   });
@@ -1090,11 +1183,14 @@ JSIL.MakeEnum(
   var $T0A = function () {
     return ($T0A = JSIL.Memoize($asm01.Microsoft.Xna.Framework.Vector2)) ();
   };
+  var $S00 = function () {
+    return ($S00 = JSIL.Memoize(new JSIL.MethodSignature(null, [$asm04.TypeRef("Microsoft.Xna.Framework.Graphics.Texture2D")], []))) ();
+  };
 
   function Enemy__ctor$00 (texture) {
     this.pathElapsed = +0;
     this.pathTimeToCheck = +1;
-    $T01().prototype._ctor.call(this, texture);
+    $S00().Call($T01().prototype, "_ctor", null, this, texture);
     this.Entity$Width$value = 32;
     this.Entity$Height$value = 32;
     this.Entity$XOffset$value = ((((texture.get_Width() - this.Entity$Width$value) | 0) / 2) | 0);
@@ -1557,6 +1653,9 @@ JSIL.MakeEnum(
 
     for (var i = 0; i < this.Level$Entities$value.get_Count(); i = ((i + 1) | 0)) {
       this.Level$Entities$value.get_Item(i).Update(elapsed);
+      if (!(($T06().$As(this.Level$Entities$value.get_Item(i)) === null) || !this.Level$Entities$value.get_Item(i).get_CollisionBox().Intersects(this.Level$Player$value.get_CollisionBox()))) {
+        this.Level$Player$value.TakeDamage(1);
+      }
       if (this.Level$Entities$value.get_Item(i).Entity$CanRemove$value) {
         if ($T06().$Is(this.Level$Entities$value.get_Item(i))) {
           this.Level$NumberOfEnemies$value = ((this.Level$NumberOfEnemies$value - 1) | 0);
@@ -2338,39 +2437,48 @@ JSIL.MakeEnum(
     return ($T05 = JSIL.Memoize($asm01.Microsoft.Xna.Framework.Rectangle)) ();
   };
   var $T06 = function () {
-    return ($T06 = JSIL.Memoize($asm06.System.Single)) ();
+    return ($T06 = JSIL.Memoize($asm06.System.Int32)) ();
   };
   var $T07 = function () {
-    return ($T07 = JSIL.Memoize($asm00.BulletHell.Engine.Direction)) ();
+    return ($T07 = JSIL.Memoize($asm06.System.Single)) ();
   };
   var $T08 = function () {
-    return ($T08 = JSIL.Memoize($asm01.Microsoft.Xna.Framework.Vector2)) ();
+    return ($T08 = JSIL.Memoize($asm00.BulletHell.Engine.Direction)) ();
   };
   var $T09 = function () {
-    return ($T09 = JSIL.Memoize($asm06.System.Int32)) ();
+    return ($T09 = JSIL.Memoize($asm01.Microsoft.Xna.Framework.Vector2)) ();
   };
   var $T0A = function () {
-    return ($T0A = JSIL.Memoize($asm00.BulletHell.Engine.Level)) ();
+    return ($T0A = JSIL.Memoize($asm00.BulletHell.Engine.Camera)) ();
   };
   var $T0B = function () {
-    return ($T0B = JSIL.Memoize($asm00.BulletHell.Engine.Tile)) ();
+    return ($T0B = JSIL.Memoize($asm00.BulletHell.Engine.Level)) ();
+  };
+  var $T0C = function () {
+    return ($T0C = JSIL.Memoize($asm00.BulletHell.Engine.Tile)) ();
   };
   var $S00 = function () {
-    return ($S00 = JSIL.Memoize(new JSIL.ConstructorSignature($asm06.TypeRef("System.Collections.Generic.List`1", [$asm00.TypeRef("BulletHell.Engine.Bullet")]), []))) ();
+    return ($S00 = JSIL.Memoize(new JSIL.MethodSignature(null, [$asm04.TypeRef("Microsoft.Xna.Framework.Graphics.Texture2D")], []))) ();
   };
   var $S01 = function () {
-    return ($S01 = JSIL.Memoize(new JSIL.ConstructorSignature($asm01.TypeRef("Microsoft.Xna.Framework.Vector2"), [$asm06.TypeRef("System.Single"), $asm06.TypeRef("System.Single")]))) ();
+    return ($S01 = JSIL.Memoize(new JSIL.ConstructorSignature($asm06.TypeRef("System.Collections.Generic.List`1", [$asm00.TypeRef("BulletHell.Engine.Bullet")]), []))) ();
+  };
+  var $S02 = function () {
+    return ($S02 = JSIL.Memoize(new JSIL.ConstructorSignature($asm01.TypeRef("Microsoft.Xna.Framework.Vector2"), [$asm06.TypeRef("System.Single"), $asm06.TypeRef("System.Single")]))) ();
   };
 
   function Player__ctor (texture) {
     this.shootTimer = +0;
-    $T01().prototype._ctor.call(this, texture);
+    this.damageTimer = +2;
+    $S00().Call($T01().prototype, "_ctor", null, this, texture);
     this.Entity$Width$value = 48;
     this.Entity$Height$value = 60;
     this.Entity$XOffset$value = ((((texture.get_Width() - this.Entity$Width$value) | 0) / 2) | 0);
     this.Entity$YOffset$value = ((((texture.get_Height() - this.Entity$Height$value) | 0) / 2) | 0);
     this.Player$ShootDelay$value = +0.2;
-    this.Player$Bullets$value = $S00().Construct();
+    this.Player$EnemiesKilled$value = 0;
+    this.Entity$Health$value = 4;
+    this.Player$Bullets$value = $S01().Construct();
   };
 
   function Player_Draw (spriteBatch) {
@@ -2393,6 +2501,10 @@ JSIL.MakeEnum(
     return new ($T05())(this.get_X(), this.get_Y(), this.Entity$Width$value, this.Entity$Height$value);
   };
 
+  function Player_get_EnemiesKilled () {
+    return this.Player$EnemiesKilled$value;
+  };
+
   function Player_get_ShootDelay () {
     return +this.Player$ShootDelay$value;
   };
@@ -2401,29 +2513,33 @@ JSIL.MakeEnum(
     this.Player$Bullets$value = value;
   };
 
+  function Player_set_EnemiesKilled (value) {
+    this.Player$EnemiesKilled$value = value;
+  };
+
   function Player_set_ShootDelay (value) {
     this.Player$ShootDelay$value = +value;
   };
 
   function Player_Shoot (d) {
     if (this.shootTimer <= 0) {
-      var b = new ($T04())();
+      var b = new ($T04())(this);
       (b.Position = this.position.MemberwiseClone());
       switch (d.valueOf()) {
         case 0: 
-          (b.Velocity = $S01().Construct(-1, 0));
+          (b.Velocity = $S02().Construct(-1, 0));
           break;
 
         case 1: 
-          (b.Velocity = $S01().Construct(1, 0));
+          (b.Velocity = $S02().Construct(1, 0));
           break;
 
         case 2: 
-          (b.Velocity = $S01().Construct(0, -1));
+          (b.Velocity = $S02().Construct(0, -1));
           break;
 
         case 3: 
-          (b.Velocity = $S01().Construct(0, 1));
+          (b.Velocity = $S02().Construct(0, 1));
           break;
 
       }
@@ -2432,10 +2548,26 @@ JSIL.MakeEnum(
     }
   };
 
+  function Player_TakeDamage (damage) {
+    var $temp00;
+    if (this.damageTimer <= 0) {
+      ($temp00 = ((this.Entity$Health$value - damage) | 0), 
+        this.Entity$Health$value = $temp00, 
+        $temp00);
+      this.damageTimer += +1;
+      this.Entity$Level$value.Level$Camera$value.Shake(5, 1);
+    }
+    if (this.Entity$Health$value <= 0) {
+    }
+  };
+
   function Player_Update (elapsed) {
     var $temp00;
     if (this.shootTimer > 0) {
       this.shootTimer -= +elapsed;
+    }
+    if (this.damageTimer > 0) {
+      this.damageTimer -= +elapsed;
     }
 
     for (var i = 0; i < this.Player$Bullets$value.get_Count(); i = ((i + 1) | 0)) {
@@ -2450,8 +2582,8 @@ JSIL.MakeEnum(
         }
       }
       if (this.Entity$Level$value.GetTile(
-          ((this.Player$Bullets$value.get_Item(i).get_X() / $T0B().Size) | 0), 
-          ((this.Player$Bullets$value.get_Item(i).get_Y() / $T0B().Size) | 0)
+          ((this.Player$Bullets$value.get_Item(i).get_X() / $T0C().Size) | 0), 
+          ((this.Player$Bullets$value.get_Item(i).get_Y() / $T0C().Size) | 0)
         ).IsSolid()) {
         this.Player$Bullets$value.get_Item(i).Bullet$IsActive$value = false;
       }
@@ -2490,6 +2622,12 @@ JSIL.MakeEnum(
       Player_get_CollisionBox
     );
 
+    $.Method({Static:false, Public:true }, "get_EnemiesKilled", 
+      new JSIL.MethodSignature($.Int32, [], []), 
+      Player_get_EnemiesKilled
+    )
+      .Attribute($asm06.TypeRef("System.Runtime.CompilerServices.CompilerGeneratedAttribute"));
+
     $.Method({Static:false, Public:true }, "get_ShootDelay", 
       new JSIL.MethodSignature($.Single, [], []), 
       Player_get_ShootDelay
@@ -2499,6 +2637,12 @@ JSIL.MakeEnum(
     $.Method({Static:false, Public:true }, "set_Bullets", 
       new JSIL.MethodSignature(null, [$asm06.TypeRef("System.Collections.Generic.List`1", [$asm00.TypeRef("BulletHell.Engine.Bullet")])], []), 
       Player_set_Bullets
+    )
+      .Attribute($asm06.TypeRef("System.Runtime.CompilerServices.CompilerGeneratedAttribute"));
+
+    $.Method({Static:false, Public:true }, "set_EnemiesKilled", 
+      new JSIL.MethodSignature(null, [$.Int32], []), 
+      Player_set_EnemiesKilled
     )
       .Attribute($asm06.TypeRef("System.Runtime.CompilerServices.CompilerGeneratedAttribute"));
 
@@ -2513,19 +2657,29 @@ JSIL.MakeEnum(
       Player_Shoot
     );
 
+    $.Method({Static:false, Public:true }, "TakeDamage", 
+      new JSIL.MethodSignature(null, [$.Int32], []), 
+      Player_TakeDamage
+    );
+
     $.Method({Static:false, Public:true , Virtual:true }, "Update", 
       new JSIL.MethodSignature(null, [$.Single], []), 
       Player_Update
     );
 
     $.Field({Static:false, Public:false}, "shootTimer", $.Single); 
+    $.Field({Static:false, Public:false}, "damageTimer", $.Single); 
     $.Field({Static:false, Public:false}, "Player$ShootDelay$value", $.Single)
       .Attribute($asm06.TypeRef("System.Runtime.CompilerServices.CompilerGeneratedAttribute")); 
     $.Field({Static:false, Public:false}, "Player$Bullets$value", $asm06.TypeRef("System.Collections.Generic.List`1", [$asm00.TypeRef("BulletHell.Engine.Bullet")]))
       .Attribute($asm06.TypeRef("System.Runtime.CompilerServices.CompilerGeneratedAttribute")); 
+    $.Field({Static:false, Public:false}, "Player$EnemiesKilled$value", $.Int32)
+      .Attribute($asm06.TypeRef("System.Runtime.CompilerServices.CompilerGeneratedAttribute")); 
     $.Property({Static:false, Public:true }, "ShootDelay", $.Single);
 
     $.Property({Static:false, Public:true }, "Bullets", $asm06.TypeRef("System.Collections.Generic.List`1", [$asm00.TypeRef("BulletHell.Engine.Bullet")]));
+
+    $.Property({Static:false, Public:true }, "EnemiesKilled", $.Int32);
 
     $.Property({Static:false, Public:true , Virtual:true }, "CollisionBox", $asm01.TypeRef("Microsoft.Xna.Framework.Rectangle"));
 
@@ -2542,9 +2696,12 @@ JSIL.MakeEnum(
   var $T01 = function () {
     return ($T01 = JSIL.Memoize($asm00.BulletHell.Engine.Util)) ();
   };
+  var $S00 = function () {
+    return ($S00 = JSIL.Memoize(new JSIL.MethodSignature(null, [$asm04.TypeRef("Microsoft.Xna.Framework.Graphics.Texture2D")], []))) ();
+  };
 
   function PowerUp__ctor () {
-    $T00().prototype._ctor.call(this, $T01().Texture);
+    $S00().Call($T00().prototype, "_ctor", null, this, $T01().Texture);
   };
 
   JSIL.MakeClass($asm00.TypeRef("BulletHell.Engine.Entity"), "BulletHell.Engine.PowerUp", true, [], function ($interfaceBuilder) {
@@ -2794,6 +2951,7 @@ JSIL.MakeEnum(
     $thisType.Texture = $S00().Construct(game.get_GraphicsDevice(), 1, 1);
     $S01().CallVirtual("SetData$b1", [$asm01.Microsoft.Xna.Framework.Color], $thisType.Texture, JSIL.Array.New($T02(), [$T02().get_White()]));
     $thisType.Font = game.get_Content().Load$b1($T03())("Font");
+    $thisType.EndFont = game.get_Content().Load$b1($T03())("EndFont");
     $thisType.OctoTexture = game.get_Content().Load$b1($T01())("Octocat");
     $thisType.random = $S02().Construct();
   };
@@ -2836,6 +2994,7 @@ JSIL.MakeEnum(
     $.Field({Static:true , Public:true }, "Texture", $asm04.TypeRef("Microsoft.Xna.Framework.Graphics.Texture2D")); 
     $.Field({Static:true , Public:true }, "OctoTexture", $asm04.TypeRef("Microsoft.Xna.Framework.Graphics.Texture2D")); 
     $.Field({Static:true , Public:true }, "Font", $asm04.TypeRef("Microsoft.Xna.Framework.Graphics.SpriteFont")); 
+    $.Field({Static:true , Public:true }, "EndFont", $asm04.TypeRef("Microsoft.Xna.Framework.Graphics.SpriteFont")); 
     $.Field({Static:true , Public:true }, "random", $asm06.TypeRef("System.Random")); 
     return function (newThisType) { $thisType = newThisType; }; 
   });
@@ -2941,16 +3100,16 @@ JSIL.MakeEnum(
     return ($T11 = JSIL.Memoize($asm06.System.Int32)) ();
   };
   var $T12 = function () {
-    return ($T12 = JSIL.Memoize($asm00.BulletHell.Engine.Util)) ();
+    return ($T12 = JSIL.Memoize($asm00.BulletHell.Engine.Entity)) ();
   };
   var $T13 = function () {
-    return ($T13 = JSIL.Memoize($asm04.Microsoft.Xna.Framework.Graphics.Texture2D)) ();
+    return ($T13 = JSIL.Memoize($asm00.BulletHell.Engine.Util)) ();
   };
   var $T14 = function () {
     return ($T14 = JSIL.Memoize($asm00.BulletHell.Engine.Player)) ();
   };
   var $T15 = function () {
-    return ($T15 = JSIL.Memoize($asm00.BulletHell.Engine.Entity)) ();
+    return ($T15 = JSIL.Memoize($asm04.Microsoft.Xna.Framework.Graphics.Texture2D)) ();
   };
   var $T16 = function () {
     return ($T16 = JSIL.Memoize($asm06.System.Single)) ();
@@ -3043,9 +3202,14 @@ JSIL.MakeEnum(
         this.spriteBatch.Begin();
         this.sb.Clear();
         this.sb.AppendLine(JSIL.ConcatString("Level: ", this.levelNumber));
-        this.sb.AppendLine(JSIL.ConcatString("Enemies left: ", this.level.Level$NumberOfEnemies$value));
+        if (this.level.Level$NumberOfEnemies$value <= 0) {
+          this.sb.AppendLine("No more enemies. Find the RED EXIT!");
+        } else {
+          this.sb.AppendLine(JSIL.ConcatString("Enemies left: ", this.level.Level$NumberOfEnemies$value));
+        }
+        this.sb.AppendLine(JSIL.ConcatString("Health: ", this.player.Entity$Health$value));
         this.spriteBatch.DrawStringBuilder(
-          $T12().Font, 
+          $T13().Font, 
           this.sb, 
           $T09().get_Zero(), 
           $T07().get_Purple()
@@ -3055,8 +3219,11 @@ JSIL.MakeEnum(
 
       case 3: 
         this.spriteBatch.Begin();
+        this.sb.Clear();
+        this.sb.AppendLine(JSIL.ConcatString("You reached level ", this.levelNumber));
+        this.sb.AppendLine(JSIL.ConcatString("You killed ", this.player.Player$EnemiesKilled$value, " enemies"));
         this.spriteBatch.DrawScaleF(
-          this.titleTexture, 
+          this.endTexture, 
           $T09().get_Zero(), 
           null, 
           $T07().get_White(), 
@@ -3066,6 +3233,7 @@ JSIL.MakeEnum(
           $T0A().None, 
           0
         );
+        this.spriteBatch.DrawStringBuilder($T13().EndFont, this.sb, $S01().Construct(150, 300), $T07().get_Gray());
         this.spriteBatch.End();
         break;
 
@@ -3074,9 +3242,10 @@ JSIL.MakeEnum(
   };
 
   function Game1_Initialize () {
-    $T12().Initialize(this);
-    this.titleTexture = this.get_Content().Load$b1($T13())("title");
-    this.player = new ($T14())(this.get_Content().Load$b1($T13())("Octocat"));
+    $T13().Initialize(this);
+    this.titleTexture = this.get_Content().Load$b1($T15())("title");
+    this.endTexture = this.get_Content().Load$b1($T15())("endtitle");
+    this.player = new ($T14())(this.get_Content().Load$b1($T15())("Octocat"));
     this.NewLevel(this.width, this.height, 3);
     $T02().prototype.Initialize.call(this);
   };
@@ -3086,16 +3255,27 @@ JSIL.MakeEnum(
   };
 
   function Game1_NewLevel (width, height, enemies) {
+    var $temp00;
     this.level = new ($T0E())(width, height, ((this.levelNumber + 2) | 0));
     this.level.AddEntity(this.player);
     this.level.Level$Player$value = this.player;
-    (this.player.Position = $S01().Construct($T16().$Cast(((((((3 * $T17().Size) | 0) + ((this.player.Entity$Width$value / 2) | 0)) | 0) - 16) | 0)), $T16().$Cast(((((((3 * $T17().Size) | 0) - ((this.player.Entity$Height$value / 2) | 0)) | 0) + (($T17().Size / 2) | 0)) | 0))));
+    ($temp00 = ((this.player.Entity$Health$value + 1) | 0), 
+      this.player.Entity$Health$value = $temp00, 
+      $temp00);
+    (this.player.Position = $S01().Construct($T16().$Cast(((((3 * $T17().Size) | 0) + ((this.player.Entity$Width$value / 2) | 0)) | 0)), $T16().$Cast(((((((3 * $T17().Size) | 0) - ((this.player.Entity$Height$value / 2) | 0)) | 0) + (($T17().Size / 2) | 0)) | 0))));
     this.player.Player$Bullets$value.Clear();
     this.camera = new ($T0D())(this);
     this.camera.Camera$Focus$value = this.player;
     (this.camera.Camera$Bounds$value = new ($T19())(0, 0, ((this.level.Level$Width$value * $T17().Size) | 0), ((this.level.Level$Height$value * $T17().Size) | 0)));
     this.level.Level$Camera$value = this.camera;
     this.level.Initialize();
+
+    for (var y = 3; y < 5; y = ((y + 1) | 0)) {
+
+      for (var x = 3; x < 5; x = ((x + 1) | 0)) {
+        (this.level.Level$Tiles$value[((x + ((y * width) | 0)) | 0)].Tile$Color$value = $T07().get_SaddleBrown().MemberwiseClone());
+      }
+    }
   };
 
   function Game1_UnloadContent () {
@@ -3123,7 +3303,6 @@ JSIL.MakeEnum(
         } else {
           (this.player.Velocity = $T09().get_Zero().MemberwiseClone());
           if (!(!this.keyboardState.IsKeyDown($T1E().Space) || !this.oldKeyboardState.IsKeyUp($T1E().Space))) {
-            this.level.AddEnemy();
 
             for (var i = 0; i < this.level.Level$Tiles$value.length; i = ((i + 1) | 0)) {
               if ($T07().op_Equality(this.level.Level$Tiles$value[i].Tile$Color$value.MemberwiseClone(), $T07().get_Black().MemberwiseClone())) {
@@ -3160,8 +3339,27 @@ JSIL.MakeEnum(
             this.width = ((this.width + 2) | 0);
             this.height = ((this.height + 2) | 0);
             this.levelNumber = ((this.levelNumber + 1) | 0);
+            if (this.width > 40) {
+              this.width = 40;
+            }
+            if (this.height > 35) {
+              this.height = 35;
+            }
             this.NewLevel(this.width, this.height, ((this.levelNumber + 2) | 0));
           }
+          if (this.player.Entity$Health$value <= 0) {
+            this.mode = $T00().End;
+          }
+        }
+        break;
+
+      case 3: 
+        if (!((this.keyboardState.GetPressedKeys().length <= 0) || !this.keyboardState.IsKeyUp($T1E().Escape))) {
+          this.mode = $T00().Gameplay;
+          this.width = 20;
+          this.height = 11;
+          this.levelNumber = 1;
+          this.NewLevel(this.width, this.height, 3);
         }
         break;
 
@@ -3218,6 +3416,7 @@ JSIL.MakeEnum(
     $.Field({Static:false, Public:false}, "mouseState", $asm01.TypeRef("Microsoft.Xna.Framework.Input.MouseState")); 
     $.Field({Static:false, Public:false}, "mode", $asm00.TypeRef("BulletHell.Engine.GameMode")); 
     $.Field({Static:false, Public:false}, "titleTexture", $asm04.TypeRef("Microsoft.Xna.Framework.Graphics.Texture2D")); 
+    $.Field({Static:false, Public:false}, "endTexture", $asm04.TypeRef("Microsoft.Xna.Framework.Graphics.Texture2D")); 
     $.Field({Static:false, Public:false}, "sb", $asm06.TypeRef("System.Text.StringBuilder")); 
     $.Field({Static:false, Public:false}, "level", $asm00.TypeRef("BulletHell.Engine.Level")); 
     $.Field({Static:false, Public:false}, "levelNumber", $.Int32); 

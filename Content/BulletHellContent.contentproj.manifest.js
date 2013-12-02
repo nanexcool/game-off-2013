@@ -6,4 +6,6 @@ contentManifest["BulletHellContent.contentproj"] = [
     ["Image", "Octocat.png", {"sizeBytes":6064}],
     ["SpriteFont", "Font.xnb", {"sizeBytes":38062}],
     ["Image", "title.png", {"sizeBytes":15967}],
+    ["Image", "endtitle.png", {"sizeBytes":15858}],
+    ["SpriteFont", "EndFont.xnb", {"sizeBytes":70830}],
 ];
