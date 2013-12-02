@@ -165,15 +165,15 @@ namespace BulletHell
                     {
                         player.Velocity = new Vector2(-300, player.Velocity.Y);
                     }
-                    else if (keyboardState.IsKeyDown(Keys.E))
+                    else if (keyboardState.IsKeyDown(Keys.D))
                     {
                         player.Velocity = new Vector2(300, player.Velocity.Y);
                     }
-                    if (keyboardState.IsKeyDown(Keys.OemComma))
+                    if (keyboardState.IsKeyDown(Keys.W))
                     {
                         player.Velocity = new Vector2(player.Velocity.X, -300);
                     }
-                    else if (keyboardState.IsKeyDown(Keys.O))
+                    else if (keyboardState.IsKeyDown(Keys.S))
                     {
                         player.Velocity = new Vector2(player.Velocity.X, 300);
                     }
