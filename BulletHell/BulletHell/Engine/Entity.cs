@@ -41,6 +41,8 @@ namespace BulletHell.Engine
 
         public bool CanFly { get; set; }
 
+        public int Health { get; set; }
+
         public Rectangle DrawRectangle
         {
             get
@@ -74,6 +76,8 @@ namespace BulletHell.Engine
             CanFly = false;
             
             CanRemove = false;
+
+            Health = 3;
         }
 
         public virtual void Update(float elapsed)

@@ -12,6 +12,8 @@ namespace BulletHell.Engine
     {
         float shootTimer = 0;
 
+        float damageTimer = 2;
+
         public float ShootDelay { get; set; }
 
         public List<Bullet> Bullets { get; set; }
@@ -34,6 +36,8 @@ namespace BulletHell.Engine
             YOffset = (texture.Height - Height) / 2;
 
             ShootDelay = 0.2f;
+
+            Health = 5;
 
             Bullets = new List<Bullet>();
         }
@@ -67,11 +71,28 @@ namespace BulletHell.Engine
             }
         }
 
+        public void TakeDamage(int damage)
+        {
+            if (damageTimer <= 0)
+            {
+                Health -= damage;
+                damageTimer += 1;
+            }
+            if (Health <= 0)
+            {
+                // DEAD
+            }
+        }
+
         public override void Update(float elapsed)
         {
             if (shootTimer > 0)
             {
                 shootTimer -= elapsed;
+            }
+            if (damageTimer > 0)
+            {
+                damageTimer -= elapsed;
             }
 
             for (int i = 0; i < Bullets.Count; i++)

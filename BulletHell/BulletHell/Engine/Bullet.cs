@@ -18,6 +18,8 @@ namespace BulletHell.Engine
 
         public float TimeToLive { get; set; }
 
+        public int Damage { get; set; }
+
         public Bullet() 
             : base(Util.Texture)
         {
@@ -31,14 +33,20 @@ namespace BulletHell.Engine
             Color = Color.Aqua;
 
             IsActive = true;
+
+            Damage = 1;
         }
 
         public void OnCollide(Entity e)
         {
             if (e is Enemy)
             {
-                e.CanRemove = true;
                 IsActive = false;
+                e.Health -= Damage;
+                if (e.Health <= 0)
+                {
+                    e.CanRemove = true;
+                }
             }
         }
 

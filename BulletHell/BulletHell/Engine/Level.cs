@@ -163,6 +163,11 @@ namespace BulletHell.Engine
             for (int i = 0; i < Entities.Count; i++)
             {
                 Entities[i].Update(elapsed);
+
+                if (Entities[i] is Enemy && Entities[i].CollisionBox.Intersects(Player.CollisionBox))
+                {
+                    Player.TakeDamage(1);
+                }
                 
                 if (Entities[i].CanRemove)
                 {

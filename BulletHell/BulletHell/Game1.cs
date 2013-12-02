@@ -74,7 +74,7 @@ namespace BulletHell
             level.AddEntity(player);
             level.Player = player;
 
-            player.Position = new Vector2(3 * Tile.Size + (player.Width / 2) - 16, 3 * Tile.Size - (player.Height / 2) + Tile.Size / 2);
+            player.Position = new Vector2(3 * Tile.Size + (player.Width / 2), 3 * Tile.Size - (player.Height / 2) + Tile.Size / 2);
             player.Bullets.Clear();
             camera = new Camera(this);
             camera.Focus = player;
@@ -82,7 +82,13 @@ namespace BulletHell
 
             level.Camera = camera;
             level.Initialize();
-
+            for (int y = 3; y < 5; y++)
+            {
+                for (int x = 3; x < 5; x++)
+                {
+                    level.Tiles[x + y * width].Color = Color.SaddleBrown;
+                }
+            }
         }
 
         /// <summary>
@@ -194,6 +200,8 @@ namespace BulletHell
                         width += 2;
                         height += 2;
                         levelNumber++;
+                        if (width > 40) width = 40;
+                        if (height > 35) height = 35;
                         NewLevel(width, height, levelNumber + 2);
                     }
                     break;
@@ -233,6 +241,7 @@ namespace BulletHell
                     sb.Clear();
                     sb.AppendLine("Level: " + levelNumber);
                     sb.AppendLine("Enemies left: " + level.NumberOfEnemies);
+                    sb.AppendLine("Health: " + player.Health);
                     spriteBatch.DrawString(Util.Font, sb, Vector2.Zero, Color.Purple);
                     spriteBatch.End();
                     break;
